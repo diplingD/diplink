@@ -1,0 +1,136 @@
+<header class="header">
+    <div class="header-left">
+        <a href="explore/{{username}}" class="profile-link"> Pocetna stranica </a>
+    </div>
+
+    <!-- Centar logo: logo.png je u assets -->
+    <div class="header-center">
+        <img src="assets/logo.png" alt="Logo" class="logo">
+    </div>
+
+    <div class="header-right">
+      <a href="" class="logout-link">Odjavi se</a>
+    </div>
+</header>
+
+<div class="main-container">
+
+    <div class="profile-container">
+        <p style="font-size: 40px; color: #04803c; font-weight: bold;">{{firstname}} {{lastname}}</p>
+        <img [src]="pictureURL" alt="User Picture" class="circle-img" width="200" height="200">
+        <p *ngIf="message">{{message}}</p>
+        <p style="font-size: 20px; color: #04803c; margin-bottom: 0;">Username: {{username}}</p>
+        
+        <div class="social-media">
+            <a href="{{igLink}}" target="_blank">
+                <img src="assets/ig_icon.png" alt="Instagram Icon" style="width: 30px; height: 30px; vertical-align: middle;">
+            </a>
+            <a href="{{ytLink}}" target="_blank">
+                <img src="assets/yt_icon.png" alt="Youtube Icon" style="width: 30px; height: 30px; vertical-align: middle;">
+            </a>
+            <a href="{{spotifyLink}}" target="_blank">
+                <img src="assets/spotify_icon.png" alt="Spotify Icon" style="width: 30px; height: 30px; vertical-align: middle;">
+            </a>
+        </div>
+        
+        <button class="password-button">Promeni lozinku</button>
+    </div>
+
+    <!-- Embed YouTube video -->
+    <div class="video-container">
+        <iframe 
+            [src]="sanitizedVideoURL" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <div class="bio-container">
+        <label for="bio" style="font-size: 20px; color: #04803c;">Biografija:</label>
+        <textarea id="bio" class="bio-textarea" rows="4">{{bio}}</textarea>
+
+        <label for="bio" style="font-size: 20px; color: #04803c; margin-top: 15px; margin-bottom: 0;">Lokacija:</label>
+        <br/>
+        <span style="margin-bottom: 15px; margin-top: 5px;">{{city}}, {{country}}</span>
+        <br/>
+
+        <label for="bio" style="font-size: 20px; color: #04803c; margin-top: 15px; margin-bottom: 5px;">Nudim:</label>
+
+        <div class="form-group"> 
+            <select name="instrument" id="instrument" class="selectpicker" multiple [(ngModel)]="skills">
+                <option value="Pevanje">Pevanje</option>
+                <option value="Gitara">Gitara</option>
+                <option value="Piano/Klavijature">Piano/Klavijature</option>
+                <option value="Bubnjevi">Bubnjevi</option>
+                <option value="Bas gitara">Bas gitara</option>
+                <option value="Gudaci">Gudaci</option>
+                <option value="Duvaci">Duvaci</option>
+            </select> 
+        </div>
+
+        <div class="form-group"> 
+            <select name="composing" id="composing" class="selectpicker" multiple [(ngModel)]="skills">
+                <option value="Komponovanje-Muzika">Komponovanje-Muzika</option>
+                <option value="Komponovanje-Tekst">Komponovanje-Tekst</option>
+                <option value="Komponovanje-Aranzman">Komponovanje-Aranzman</option>
+            </select> 
+        </div>
+
+        <div class="form-group"> 
+            <select name="production" id="production" class="selectpicker" multiple [(ngModel)]="skills">
+                <option value="Mix">Mix</option>
+                <option value="Master">Master</option>
+                <option value="Snimanje">Snimanje</option>
+            </select> 
+        </div>
+
+        <br/>
+        <button class="password-button">Sacuvaj izmene</button>
+    </div>
+
+</div>
+
+<!-- COMMENTS SECTION --> 
+
+<div class="comments-container">
+    <p style="font-size: 40px; color: #04803c; font-weight: bold;">KOMENTARI</p>
+
+    <div *ngFor="let comment of comments" class="user-card">
+        <div class="user-card-left">
+            <div class="user-info" style="width: 300px;">
+                <h3>&#64;{{ comment.author }}:</h3>
+            </div>
+            <div>
+                <span style="margin-left: 10px; margin-right: 20px; color: #333;">{{comment.comment}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button (click)="toggleChat()" class="chat-toggle-button">💬</button>
+
+<!-- Chat box -->
+<div *ngIf="isChatVisible" class="chat-box">
+    <div *ngFor="let message of messages"  class="message">
+        <div *ngIf="message.receiver === username || message.sender === username">
+            <a *ngIf="message.receiver === username" (click)="navigateToProfile(message.sender)">
+                &#64;{{ message.sender }}: 
+            </a>
+            <a *ngIf="message.sender === username" style="color: #04803c;">
+                &#64;{{ message.sender }} -> {{ message.receiver }}: 
+            </a>
+            <span>{{ message.content }}</span>
+        </div>      
+    </div>
+
+    <div class="send-message">
+        <label style="margin-right: 10px;">Kome saljete</label>
+        <input [(ngModel)]="receiver" placeholder="username..." />
+        <textarea id="msg" class="bio-textarea" rows="3" [(ngModel)]="newMessage" placeholder="Unesite poruku..."> </textarea>
+        <!-- <input [(ngModel)]="newMessage" placeholder="Unesite poruku..." /> -->
+        <button (click)="sendMessage()" class="send-button">Posalji</button>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<header class="header">
+    <div class="header-left">
+        <img src="assets/logo.png" alt="Logo" class="logo">      
+    </div>
+
+    <div class="header-right">
+        <a class="logout-link"> {{myUsername}} </a>
+            <ul>
+                <li><a href="myprofile/{{myUsername}}">Moj profil</a></li>
+                <li><a href="" class="logout-link">Odjavi se</a></li>
+            </ul>
+    </div>
+</header>
+
+
+<div class="main-container">
+    <div class="profile-container">
+        <p style="font-size: 40px; color: #04803c; font-weight: bold;">{{firstname}} {{lastname}}</p>
+        <img [src]="pictureURL" alt="User Picture" class="circle-img" width="200" height="200">
+        <p *ngIf="message">{{message}}</p>
+        <p style="font-size: 20px; color: #04803c; margin-bottom: 0;">Username: {{userUsername}}</p>
+        
+        <div class="social-media">
+            <a href="{{igLink}}" target="_blank">
+                <img src="assets/ig_icon.png" alt="Instagram Icon" style="width: 30px; height: 30px; vertical-align: middle;">
+            </a>
+            <a href="{{ytLink}}" target="_blank">
+                <img src="assets/yt_icon.png" alt="Youtube Icon" style="width: 30px; height: 30px; vertical-align: middle;">
+            </a>
+            <a href="{{spotifyLink}}" target="_blank">
+                <img src="assets/spotify_icon.png" alt="Spotify Icon" style="width: 30px; height: 30px; vertical-align: middle;">
+            </a>
+        </div>
+
+        <p style="font-size: 20px; color: #04803c; margin-top: 0;">mail: {{mail}}</p>
+        
+        <button class="password-button" (click)="toggleChat()">POSALJI PORUKU</button>
+    </div>
+    
+    <!-- Embed YouTube video -->
+    <div class="video-container">
+        <iframe 
+            [src]="sanitizedVideoURL" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    
+    <!-- ABOUT SECTION -->
+    <div class="bio-container">
+        <label for="bio" style="font-size: 20px; color: #04803c;">Biografija:</label>
+        <textarea id="bio" class="bio-textarea" rows="6" readonly>{{bio}}</textarea>
+    
+        <label for="bio" style="font-size: 20px; color: #04803c; margin-top: 15px; margin-bottom: 0;">Lokacija:</label>
+        <br/>
+        <span style="margin-bottom: 15px; margin-top: 5px;">{{city}}, {{country}}</span>
+        <br/>
+    
+        <label for="bio" style="font-size: 20px; color: #04803c; margin-top: 15px; margin-bottom: 5px;">Nudim:</label>
+        <p>{{ skills.join(', ') }}</p>
+    </div>
+</div>
+    
+<!-- COMMENTS SECTION --> 
+<div class="comments-container">
+    <p style="font-size: 40px; color: #04803c; font-weight: bold; margin-bottom: 0;">KOMENTARI</p>
+    <button *ngIf="commentClicked==false" class="password-button" style="margin-bottom: 15px;" (click)="addComment()">OCENI KORISNIKA</button>
+    <div *ngIf="commentClicked==true" class="user-card">
+        <textarea style="width: 80%;" placeholder="Unesite komentar..." [(ngModel)]="newCommentText"></textarea>
+        <button class="password-button" style="margin-bottom: 15px; margin-top: 10px; margin-right: 50px;" (click)="commendAdded()">OCENI KORISNIKA</button>
+    </div>
+    
+    <div *ngFor="let comment of comments" class="user-card">
+        <div class="user-card-left">
+            <div class="user-info" style="width: 200px;">
+                <h3>{{ comment.author }}</h3>
+            </div>
+            <div>
+                <span style="margin-left: 10px; margin-right: 20px; color: #333;">{{comment.comment}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Chat box -->
+<button (click)="toggleChat()" class="chat-toggle-button">💬</button>
+
+<div *ngIf="isChatVisible" class="chat-box">
+    <div *ngFor="let message of messages"  class="message">
+        <div *ngIf="(message.receiver === userUsername && message.sender === myUsername) || (message.receiver === myUsername && message.sender === userUsername)">
+            <a *ngIf="message.receiver === myUsername">
+                &#64;{{ message.sender }}: 
+            </a>
+            <a *ngIf="message.sender === myUsername" style="color: #04803c;">
+                &#64;{{ message.sender }}: 
+            </a>
+            <span>{{ message.content }}</span>
+        </div>      
+    </div>
+
+    <div class="send-message">
+        <textarea id="msg" class="bio-textarea" rows="3" [(ngModel)]="newMessage" placeholder="Unesite poruku..."> </textarea>
+        <button (click)="sendMessage()" class="send-button">Posalji</button>
+    </div>
+</div>

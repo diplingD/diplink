@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="title-container">
+        <h1>Reci nam nesto o sebi</h1>
+    </div>
+    
+    <div class="bottom-container">
+        <div class="left-form-container">                
+            <div style="margin-bottom: 15px;">
+                <label for="city" style="display: block; margin-bottom: 0;">Grad</label>
+                <input style="width: 100%;" type="text" id="city" name="city" placeholder="Unesite vas grad" [(ngModel)]="city" />
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="country" style="display: block; margin-bottom: 0;">Drzava</label>
+                <input style="width: 100%;" type="text" id="country" name="country" placeholder="Unesite vasu drzavu" [(ngModel)]="country" />
+            </div>
+
+            <label for="bio" style="display: block; margin-bottom: 0;">Biografija:</label>
+            <textarea id="bio" class="bio-textarea" rows="6" style="border-radius: 8px;" placeholder="Recite nam nesto o sebi..." [(ngModel)]="bio"></textarea>                
+        </div>
+
+        <div class="right-form-container">
+            <div style="margin-bottom: 15px;">
+                <label for="profilePic" style="display: block; margin-bottom: 0;">Dodaj profilnu fotografiju:</label>
+                <form (submit)="uploadImage($event)">
+                    <input style="margin-right: 0;" type="file" name="image" accept="image/jpeg, image/png" (change)="onFileSelected($event)">
+                    <button type="submit" class="upload-button">Upload</button>
+                </form>
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="video" style="display: block; margin-bottom: 0;">Dodaj link ka YouTube klipu koji te najbolje predstavlja</label>
+                <input style="width: 100%;" type="text" id="video" name="video" placeholder="https://www.youtube.com/..." [(ngModel)]="videoURL" />
+            </div>
+
+            <div style="margin-bottom: 15px;">
+                <label for="video" style="display: block; margin-bottom: 10px;">Instagram, Youtube i Spotify profili su najbolji nacin da predstavite sebe</label>
+                <div style="margin-bottom: 15px;">
+                    <img src="assets/ig_icon.png" alt="Instagram Icon" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 10px;">
+                    <input style="width: 70%;" type="text" id="igURL" name="igURL" placeholder="https://www.instagram.com/..." [(ngModel)]="igURL" />
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <img src="assets/yt_icon.png" alt="Youtube Icon" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 10px;">
+                    <input style="width: 70%;" type="text" id="ytURL" name="ytURL" placeholder="https://www.youtube.com/..." [(ngModel)]="ytURL" />
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <img src="assets/spotify_icon.png" alt="Spotify Icon" style="width: 30px; height: 30px; vertical-align: middle; margin-right: 10px;">
+                    <input style="width: 70%;" type="text" id="spotifyURL" name="spotifyURL" placeholder="https://www.spotify.com/..." [(ngModel)]="spotifyURL" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div>
+        <button (click)="registerUser()" style="margin-bottom: 50px;">REGISTRACIJA</button>
+        {{message}}
+    </div>
+
+</div>

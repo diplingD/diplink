@@ -1,0 +1,51 @@
+<header> 
+    <div class="header-center">
+        <img src="assets/logo.png" alt="Logo" class="logo">
+    </div>
+</header>
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form>
+			<h1 style="margin-bottom: 10px;">Napravi nalog</h1>
+			<input type="text" placeholder="Vase ime" [(ngModel)]="nameReg" name="nameReg" />
+			<input type="email" placeholder="Korisnicko ime" [(ngModel)]="usernameReg" name="usernameReg" />
+			<input type="text" placeholder="Email" [(ngModel)]="emailReg" name="emailReg" />
+			<input type="password" placeholder="Lozinka" [(ngModel)]="passwordReg" name="passwordReg" />
+            <span class="note">Napomena: Vase ime ce biti vidljivo na profilu, pa mozete uneti i umetnicko ime.</span>
+			<button type="button" (click)="navigateToRegistration()">Dalje</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form>
+			<h1>Log in</h1>
+			<p></p>
+			<input type="email" placeholder="Email" [(ngModel)]="emailLogin" name="emailLogin" />
+			<input type="password" placeholder="Lozinka" [(ngModel)]="passwordLogin" name="passwordLogin" />
+			<span style="color: red" >{{message}}</span>
+			<a href="#">Zaboravio/la si lozinku?</a>
+			<button (click)="login()">Uloguj se</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Dip-Link</h1>
+				<p>Platforma koja ce ti omoguciti da se povezes sa ljudima iz sveta muzike</p>
+				<button class="ghost" id="signIn">Vrati se</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Nemas profil?</h1>
+				<p>Dip-linkuj se sa ljudima iz sveta muzike</p>
+				<button class="ghost" id="signUp">Napravi nalog</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<p>
+		Created and owned by 
+		<a target="_blank" href="https://www.youtube.com/channel/UCH-0O6hC9ePPqGhS6Gx5f_A/">David Dipling Maslovaric</a>.
+	</p>
+</footer>

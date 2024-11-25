@@ -1,0 +1,206 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+  
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right a:hover {
+    color: #3ca0e7;
+    transition: color 0.3s ease;
+}
+  
+.profile-link, .logout-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+  
+.profile-link:hover, .logout-link:hover {
+    text-decoration: underline;
+}
+
+.search-bar {
+    padding: 20px;
+    background-color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns items to the left */
+    width: 350px; /* Set a fixed width for the vertical layout */
+    height: 100vh;  /* full page height */
+    /*position: fixed;*/    /* mozda izbrisati */
+}
+
+.search-fields {
+    display: flex;
+    /*flex-wrap: wrap;*/
+    flex-direction: column; /* Stack the fields vertically */
+    gap: 15px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #04803c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+    border-radius: 5px;
+}
+
+/* SEPARATOR */
+.colored-hr {
+    border: 0; /* Remove default border */
+    height: 2px; /* Set the height of the line */
+    background-color: #04803c; /* Set the color of the line */
+    margin: 20px 0; /* Adjust spacing as needed */
+}
+
+.white-hr {
+    border: 0; /* Remove default border */
+    height: 1px; /* Set the height of the line */
+    background-color: #f3f8f6; /* Set the color of the line */
+    margin: 0; /* Adjust spacing as needed */
+    padding: 0;
+}
+
+/* ===================================================== */
+/* ==================== HEADER LEFT ==================== */
+/* ===================================================== */
+.header-left, .header-right {
+    display: inline-block;
+    /*text-align: center;*/
+    position: relative;
+}
+  
+.header-right a {
+    color: black;
+    padding: 15px 20px;
+    display: inline-block;
+    border-left: 2px solid #04803c;
+}
+  
+.header-right ul {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    display: none;
+    background: white;
+    padding-top: 15px;
+    box-shadow: 0px 3px 5px -1px #ccc;
+    min-width: 150px;
+    text-align: left;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+  
+.header-right:hover ul, .header-right ul:hover {      /* hover je kada se misem predje preko tok elementa */
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+  
+.header-right ul li {
+    list-style: none;
+    margin-bottom: 15px;
+    text-align: left;
+}
+  
+.header-right ul li a {
+    display: block;
+    color: black;
+    padding: 10px 15px;
+    transition: padding-left 0.3s ease;
+}
+  
+.header-right ul li a:hover {
+    padding-left: 20px;
+    border-left: 2px solid #3ca0e7;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+/* ======================================================= */
+/* ==================== HEADER | LOGO ==================== */
+/* ======================================================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+.header-center {
+    text-align: center;
+    flex: 0; /* Keep the logo div size dependent on the image size */
+}
+
+.logo {
+    height: 30px; /* Adjust as necessary for your logo size */
+}
+
+/* ======================================================= */
+/* ====================== ALL USERS ====================== */
+/* ======================================================= */
+.main-content {
+    display: flex;
+    flex-direction: row;
+    /*width: 100%;*/ /* Ensure the container uses full width */
+}
+
+.user-list {
+    flex: 2;
+    margin-top: 20px;
+    padding: 10px;
+    max-height: calc(100vh - 150px); /* Adjust based on your layout */
+    overflow-y: auto;
+    width: 100%;
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.user-card-left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.user-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.user-info h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.user-info p {
+    margin: 5px 0 0;
+    color: #555;
+}
+
+

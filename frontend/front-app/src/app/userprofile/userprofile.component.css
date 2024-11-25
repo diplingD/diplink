@@ -1,0 +1,302 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+  
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.header-right a:hover {
+    color: #3ca0e7;
+    transition: color 0.3s ease;
+}
+  
+.profile-link, .logout-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+  
+.profile-link:hover, .logout-link:hover {
+    text-decoration: underline;
+}
+
+/* ===================================================== */
+/* ==================== HEADER LEFT ==================== */
+/* ===================================================== */
+.header-left, .header-right {
+    display: inline-block;
+    /*text-align: center;*/
+    position: relative;
+}
+  
+.header-right a {
+    color: black;
+    padding: 15px 20px;
+    display: inline-block;
+    border-left: 2px solid #04803c;
+}
+  
+.header-right ul {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    display: none;
+    background: white;
+    padding-top: 15px;
+    box-shadow: 0px 3px 5px -1px #ccc;
+    min-width: 150px;
+    text-align: left;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+  
+.header-right:hover ul, .header-right ul:hover {      /* hover je kada se misem predje preko tok elementa */
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+  
+.header-right ul li {
+    list-style: none;
+    margin-bottom: 15px;
+    text-align: left;
+}
+  
+.header-right ul li a {
+    display: block;
+    color: black;
+    padding: 10px 15px;
+    transition: padding-left 0.3s ease;
+}
+  
+.header-right ul li a:hover {
+    padding-left: 20px;
+    border-left: 2px solid #3ca0e7;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+/* ======================================================= */
+/* ==================== HEADER | LOGO ==================== */
+/* ======================================================= */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+}
+
+.header-center {
+    text-align: center;
+    flex: 0; /* Keep the logo div size dependent on the image size */
+}
+
+.logo {
+    height: 30px; /* Adjust as necessary for your logo size */
+}
+
+/* ================================================================================== */
+/* ================================== MAIN CONTENT ================================== */
+/* ================================================================================== */
+
+/* DEO SA PODACIMA */
+.profile-container {
+    display: flex;
+    flex-direction: column;  /* Arrange items vertically */
+    align-items: center;     /* Center items horizontally */
+    margin: 20px;       /* Center the container itself and add spacing around */
+    padding: 20px;           /* Add padding inside the container */
+    width: 400px;        /* Optional: Set a maximum width for the container */
+    border-radius: 8px;     /* Optional: Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for a better look */
+    /*background-color: #1a1919;*/
+    position: relative;
+    left: 4%;
+}
+
+/* SOCIAL MEDIA */
+.social-media {
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+.social-media img {
+    margin-right: 8px; /* Adds space between each icon */
+}
+
+/* BUTTON */
+.password-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #04803c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* CIRCLE */
+.circle-img {
+    border-radius: 50%; /* This makes the image circular */
+    width: 200px;       /* Set width and height */
+    height: 200px;
+    object-fit: cover;  /* Ensures the image fits within the circle without distortion */
+}
+
+/* yt video */
+.video-container {
+    margin: 20px;
+    padding: 20px;
+    display: flex;
+    position: relative;
+
+    /* Increase the size by adjusting width and height */
+    width: 100%;  /* Adjust to your preferred width */
+    max-width: 800px;  /* Optional: Set a maximum width for larger screens */
+    padding-bottom: 22.5%;  /* 16:9 aspect ratio (9 / 16 = 0.5625 or 56.25%) */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;  /* Maintain rounded corners */
+    border: none;  /* Remove default iframe border */
+}
+
+/* RIGHT BOX */
+.bio-container {
+    position: relative;
+    /*top: 20px;*/  /* Align it to the top */
+    right: 4%; /* Align it to the right */
+    width: 400px; /* Set a width to the bio section */
+    /*background-color: #f5f5f5;*/
+    margin: 20px;
+    padding: 20px; /* Optional: Padding for the bio */
+    border-radius: 8px;     /* Optional: Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for effect */
+}
+
+/* Bio Textarea */
+.bio-textarea {
+    width: 100%; /* Ensure the textarea fits inside the bio-container */
+    resize: none; /* Optional: Disable resizing */
+}
+
+/* ========================================================= */
+/* ==================== COMENTS SECTION ==================== */
+/* ========================================================= */
+
+.main-container {
+    display: flex; /* Enable flexbox layout */
+    justify-content: space-between; /* Distribute space between items */
+    align-items: center; /* Align items at the start (top) of the container */
+    /*background-color: #3ca0e7;*/
+}
+/* COMMENTS SECTION */
+.comments-container {
+    width: 100%; /* Full width minus some padding on sides */
+    padding: 20px; /* Add padding inside for some space */
+    margin-top: 20px; /* Add some margin to separate it from the content above */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add shadow for effect */
+    background-color: #00000013;
+    border-radius: 8px;
+    flex: 2;
+    overflow-y: auto;
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.user-card-left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.user-info h3 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.user-info p {
+    margin: 5px 0 0;
+    color: #555;
+}
+
+/* CHAT BOX */
+.chat-toggle-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #04803c;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+/* Chat box styling */
+.chat-box {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+    z-index: 999;
+}
+  
+.message {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #04803c; /* Default color */
+    cursor: pointer; /* Shows pointer cursor when hovering */
+    font-weight: bold; /* Make the text bold */
+}
+  
+a:hover {
+    color: blue; /* Change color to blue when hovering */
+    text-decoration: underline; /* Adds underline when hovering */
+}
+
+.send-button {
+    padding: 8px 15px;
+    font-size: 16px;
+    background-color: #04803c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}

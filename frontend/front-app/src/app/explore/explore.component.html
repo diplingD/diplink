@@ -1,0 +1,107 @@
+<header class="header">
+    <div class="header-left">
+        <img src="assets/logo.png" alt="Logo" class="logo">      
+    </div>
+
+    <!-- Centar logo: logo.png je u assets 
+    <div class="header-center">
+        <img src="assets/logo.png" alt="Logo" class="logo">
+    </div>
+    -->
+
+    <div class="header-right">
+        <a class="logout-link"> {{username}} </a>
+            <ul>
+                <li><a href="myprofile/{{username}}">Moj profil</a></li>
+                <li><a href="" class="logout-link">Odjavi se</a></li>
+            </ul>
+    </div>
+</header>
+
+<div class="main-content">
+
+    <div class="search-bar">
+        <form>        
+            <input type="text" placeholder="korisnicko ime..." [(ngModel)]="searchParam" name="search"/>
+            <button class="search-button" (click)="searchUsers(); $event.preventDefault()">Pretrazi</button>
+            <hr class="colored-hr" />
+
+            <div class="search-fields">
+                <span style="color: white;"> KOMPONOVANJE </span>
+                <hr class="white-hr" />
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Komponovanje-Tekst', $event)"/> <span style="color: white;"> Tekst </span>
+                </label>
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Komponovanje-Muzika', $event)"/> <span style="color: white;"> Muzika </span>
+                </label>
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Komponovanje-Aranzman', $event)"/> <span style="color: white;"> Aranzman </span>
+                </label>
+
+                <span style="color: white;"> STUDIO </span>
+                <hr class="white-hr" />
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Mix', $event)"/> <span style="color: white;"> Mix </span>
+                </label>
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Master', $event)"/> <span style="color: white;"> Master </span>
+                </label>
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Snimanje', $event)"/> <span style="color: white;"> Snimanje </span>
+                </label>
+                
+                <span style="color: white;"> GLAS/INSTRUMENTI </span>
+                <hr class="white-hr" />
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Pevanje', $event)" /> <span style="color: white;"> Pevanje </span>
+                </label>
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Gitara', $event)"/> <span style="color: white;"> Gitara </span>
+                </label>
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Klavijature', $event)"/> <span style="color: white;"> Piano/Klavijature </span>
+                </label>
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Bubnjevi', $event)"/> <span style="color: white;"> Bubnjevi </span>
+                </label>
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Bas gitara', $event)"/> <span style="color: white;"> Bas gitara </span>
+                </label>
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Gudaci', $event)"/> <span style="color: white;"> Gudaci </span>
+                </label>
+                <label>
+                    <input type="checkbox" (change)="onSkillChange('Duvaci', $event)"/> <span style="color: white;"> Duvaci </span>
+                </label>
+            </div>        
+        </form>    
+    </div>
+
+    <div class="user-list">
+        <div *ngFor="let user of filteredUsers" class="user-card">
+            <div class="user-card-left">
+                <img [src]="user.pictureURL" alt="User Photo" class="user-photo">
+                <div class="user-info">
+                    <h3>{{ user.firstname }}</h3>
+                    <h6 style="margin-bottom: 0;">&#64;{{ user.username }}</h6>
+                    <p style="margin-top: 0;">{{ user.mail }}</p>
+                    <img src="assets/like_icon.png" alt="Like Icon" style="width: 20px; height: 20px;">
+                    <span style="margin-left: 10px; margin-right: 20px;">{{user.likesCnt}}</span>
+                    <img src="assets/dislike_icon.png" alt="Dislike Icon" style="width: 20px; height: 20px;">
+                    <span style="margin-left: 10px; margin-right: 20px;">{{user.dislikesCnt}}</span>
+                </div>
+                <div style="margin-left: 50px; margin-right: 50px;">
+                    <img src="assets/location_icon.png" alt="Location Icon" style="width: 30px; height: 30px;">
+                    <span style="margin-left: 10px; margin-right: 20px; font-weight: bold; color: #333;">{{user.city}}, {{user.country}}</span>
+                </div>
+            </div>
+
+            <button (click)="navigateToProfile(user.username)" class="search-button" style="margin-right: 50px;">
+                Pogledaj profil
+            </button>
+        </div>
+
+    </div>
+
+</div>
