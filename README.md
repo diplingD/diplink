@@ -7,9 +7,9 @@ Below are the application layouts for all usage scenarios.
   <summary>Show Screenshots</summary>
 
   ### Screenshot 1
-  ![LogIn](../slike/log-in.png)
+  ![LogIn](./screenshots/log-in.png)
 
   ### Screenshot 2
-  ![Explore Page](../slike/explore-page.png)
+  ![Explore Page](./screenshots/explore-page.png)
 
 </details>
