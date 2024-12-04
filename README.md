@@ -37,5 +37,5 @@ Below are the application layouts for all usage scenarios.
 
 </details>
 
-#Licence
+# Licence
 Copyright 2024. David Maslovaric
